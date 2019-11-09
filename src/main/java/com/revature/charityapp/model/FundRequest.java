@@ -16,10 +16,6 @@ public class FundRequest {
     @Column(name="id")
 	private int fundId;
 	
-	/*
-	 * @Column(name="admin_id") private int adminId;
-	 */
-    
     @Column(name="request_type")
 	private String reqType;
     
@@ -31,6 +27,7 @@ public class FundRequest {
    
    @Column(name="fund_p")
    private double fundPending;
+   
 
 	public double getFundRaised() {
 	return fundRaised;

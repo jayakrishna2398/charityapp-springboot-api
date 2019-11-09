@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.charityapp.configuration.Message;
-
+import com.revature.charityapp.model.Users;
 import com.revature.charityapp.model.UsersTransaction;
 import com.revature.charityapp.service.FundRequestService;
 import com.revature.charityapp.service.TransactionService;

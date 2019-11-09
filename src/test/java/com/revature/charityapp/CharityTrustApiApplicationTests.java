@@ -1,5 +1,6 @@
 package com.revature.charityapp;
 
+
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;

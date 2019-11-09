@@ -25,7 +25,7 @@ public class UsersTransaction {
 	@Column(name="amount_funded")
 	private double targetAmount;
 	
-
+	
 
 	public int getTransactionId() {
 		return transactionId;
@@ -61,8 +61,8 @@ public class UsersTransaction {
 
 	@Override
 	public String toString() {
-		return "UsersTransaction [donorId=" + donorId + ", fundRequestId=" + fundRequestId + ", targetAmount="
-				+ targetAmount + ", transactionId=" + transactionId + "]";
+		return "UsersTransaction [transactionId=" + transactionId + ", donorId=" + donorId + ", fundRequestId="
+				+ fundRequestId + ", targetAmount=" + targetAmount + "]";
 	}
 
 }

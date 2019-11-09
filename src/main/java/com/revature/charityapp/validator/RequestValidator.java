@@ -4,7 +4,6 @@ package com.revature.charityapp.validator;
 
 import com.revature.charityapp.configuration.Message;
 import com.revature.charityapp.exception.ValidationException;
-import com.revature.charityapp.model.Admin;
 import com.revature.charityapp.model.FundRequest;
 	@Component
 	public class RequestValidator {

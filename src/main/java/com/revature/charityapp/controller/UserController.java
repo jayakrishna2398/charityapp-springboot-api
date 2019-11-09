@@ -65,7 +65,6 @@ public class UserController {
 		Users users=null;
 		try {
 			users = new Users();
-//		users.setDonorId(donorId);
 		users.setDonorName(donorName);
 		users.setDonorEmailId(donorEmailId);
 		users.setDonorPassword(donorPassword);

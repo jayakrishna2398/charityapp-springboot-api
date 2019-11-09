@@ -8,17 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import io.swagger.annotations.ApiResponse;
 
 import com.revature.charityapp.configuration.Message;
 import com.revature.charityapp.exception.ServiceException;
+import com.revature.charityapp.model.Admin;
 import com.revature.charityapp.model.FundRequest;
 import com.revature.charityapp.service.FundRequestService;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 
@@ -37,14 +37,15 @@ public class FundRequestController extends HttpServlet {
 	public ResponseEntity<Object> addRequest(@RequestParam("fundId") int fundId,@RequestParam("fundRequest") String reqType,@RequestParam("amountTarget") int amount) {
 		String errorMessage = null;
 		FundRequest request = null;
+		Admin admin = null;
 		try {
 			request = new FundRequest();
 			request.setReqType(reqType);
 			request.setAmount(amount);
 			request.setFundId(fundId);
-			fundReqService.registerUser(request);
+			fundReqService.registerUser(request,admin);
 			return new ResponseEntity<>(request, HttpStatus.OK );
-		} catch (Exception e) {
+		} catch (ServiceException e) {
 			errorMessage = e.getMessage();
 			  Message message = new Message(errorMessage);
 	           return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST );

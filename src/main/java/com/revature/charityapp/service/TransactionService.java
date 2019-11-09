@@ -20,13 +20,11 @@ public class TransactionService {
 	        return requestObj;
 	    }
 	   @Transactional
-       public void transaction(UsersTransaction donor) throws ServiceException {
-           try {
+       public void transaction(UsersTransaction donor) throws ServiceException{
+           try { 
         	   		System.out.println(donor);
                    transRepository.save(donor);
-                
                }catch (Exception e) {
-            	   e.printStackTrace();
                    throw new ServiceException(e.getMessage());
                }
            }

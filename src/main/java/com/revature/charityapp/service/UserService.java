@@ -86,7 +86,7 @@ public class UserService {
     			content.append(" jayakrishna.").append("\n");   
                 message.setText(content.toString());
                 emailSender.send(message);
-        	}catch(Exception e) {
+        	}catch(MailException e) {
         		throw new ServiceException("email not sent");
         	}
         }
