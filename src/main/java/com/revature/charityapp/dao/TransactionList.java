@@ -12,15 +12,14 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
+import com.revature.charityapp.exception.DBException;
 import com.revature.charityapp.model.FundRequest;
 
-import exception.DBException;
 @Repository
 public class TransactionList {
 	@Autowired
 	private DataSource dataSource;
-	public List<FundRequest> donorFundRequest() throws SQLException {
+	public List<FundRequest> donorFundRequest() throws DBException {
 		
 		Connection con = null;
 		List<FundRequest> list = null;

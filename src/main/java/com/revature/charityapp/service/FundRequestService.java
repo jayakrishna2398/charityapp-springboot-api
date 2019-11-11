@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.charityapp.dao.TransactionList;
+import com.revature.charityapp.exception.DBException;
 import com.revature.charityapp.exception.ServiceException;
 import com.revature.charityapp.exception.ValidationException;
 import com.revature.charityapp.model.Admin;
@@ -50,7 +51,7 @@ public class FundRequestService {
 	            List<FundRequest> list = null;
 	            try {
 	                list = trans.donorFundRequest();
-	            } catch (SQLException e) {
+	            } catch (DBException e) {
 	                throw new ServiceException(e.getMessage(), e);
 	            }
 	        return list;
