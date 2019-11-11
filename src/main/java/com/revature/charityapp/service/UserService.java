@@ -41,7 +41,6 @@ public class UserService {
                 try {
 					donorObj=userRepository.findAll();
 				} catch (Exception e) {
-					e.printStackTrace();
 					throw new ServiceException("List cant be viewed");
 				}    
             return donorObj;
@@ -65,7 +64,6 @@ public class UserService {
     			message.setText(text);
 
     			emailSender.send(message);
-    			System.out.println("Mail Sent");
     		} catch (MailException exception) {
     			throw new ServiceException(exception.getMessage());
     		}

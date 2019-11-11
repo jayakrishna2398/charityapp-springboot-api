@@ -22,15 +22,17 @@ public class TransactionList {
 	private DataSource dataSource;
 	public List<FundRequest> donorFundRequest() throws SQLException {
 		
-		Connection con = dataSource.getConnection();
+		Connection con = null;
 		List<FundRequest> list = null;
+		PreparedStatement pst = null;
 		try {
+			con = dataSource.getConnection();
 			list = new ArrayList<FundRequest>();
 			String sql =  "select request_type,target_amount,"
 					+ " ifnull((select sum(amount_funded) from transaction_details where fund_id = fr.id),0) as fund_raised,"
 					+ " ifnull(target_amount -(select sum(amount_funded) from transaction_details where fund_id = fr.id),0) as fund_p"
 					+ " from fund_request fr";
-			PreparedStatement pst = con.prepareStatement(sql);
+			pst = con.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			FundRequest request = null;
 			while (rs.next()) {
@@ -47,8 +49,9 @@ public class TransactionList {
 				list.add(request);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException(e.getMessage());
+		}finally {
+			System.out.println("connection closed");
 		}
 		return list;
 
